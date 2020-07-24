@@ -1,0 +1,28 @@
+{
+    "data" : [
+        {
+             "id" : 1,
+             "name" : "Aaqib",
+             "username" : "aaqibgouher",
+             "address" : "Bangalore"
+         },
+         {
+             "id" : 2,
+             "name" : "Saqib",
+             "username" : "saqibgouher",
+             "address" : "Jharkhand"
+         },
+         {
+             "id" : 3,
+             "name" : "Danish",
+             "username" : "gouherdanish",
+             "address" : "Bangalore"
+         },
+         {
+             "id" : 4,
+             "name" : "Nazish",
+             "username" : "nazishfraz",
+             "address" : "Bangalore"
+         }
+    ]
+}

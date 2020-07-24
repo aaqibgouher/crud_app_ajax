@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">        <!--used because , as screen size will change ,it will automatically adjust its body !-->
+        <title>JQuerry Crud App Ajax</title>
+
+        <!-- css -->
+        <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="plugins/datatables/datatables.css" rel="stylesheet">
+        <link href="css/app.css" rel="stylesheet">
+
+        
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12" >
+                    <!-- <h2>CRUD APP<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#user_add_modal"><span class="glyphicon glyphicon-plus"></span> Add</button></h2> -->
+                    
+                    <!-- <div class="form-group">
+                        <input class="form-control" type="text" id="search_input" placeholder="search">
+                    </div> -->
+
+                    <h2>DataTables</h2>
+                    
+                    <table class="table table-bordered table-hover" id="user_list" >
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>name</th>
+                                <th>user_name</th>
+                                <!-- <th>email</th> -->
+                                <th>city</th>
+                                <th>company_name</th>
+                                <!-- <th>action</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <script src="plugins/jquery/jquery.min.js"></script>        <!--added jquery file path-->
+        <script src="plugins/bootstrap/js/bootstrap.min.js"></script>   <!--added bootstrap file paath-->
+        <script src="plugins/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="plugins/datatables/datatables.js"></script>
+        <script src="js/app.js"></script>       <!--added js path-->
+    </body>
+</html>
+
