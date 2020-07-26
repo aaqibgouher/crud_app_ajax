@@ -91,7 +91,6 @@ $(document).ready(function(){
     // });
 
     // from Ajax
-    var arr = [];
     var obj = {};
 
     function get_users_data(){
@@ -107,40 +106,37 @@ $(document).ready(function(){
                 {data : "username"},        //selected username column
                 {data : "email"},        //selected address and then city column
                 {data : "company.name"},     //selected company and then its name column
-                {"defaultContent": "<div class='btn-group'><button class='btn btn-success btn-xs get-todo-btn' data-target='#user_todo_modal' data-toggle='modal' data-toggle='modal' title='get_todo_list'><i class='fa fa-address-book'></i></button><button class='btn btn-warning btn-xs get-on-map' data-target='#user_map_modal' data-toggle='modal' data-toggle='modal' title='see_on_map'><i class='fa fa-map-marker'></i></button></div>"}
+                {"defaultContent": "<div class='btn-group'><button class='btn btn-success btn-xs user_todo_btn' data-target='#user_todo_modal' data-toggle='modal' data-toggle='modal' title='get_todo_list'><i class='fa fa-address-book'></i></button><button class='btn btn-warning btn-xs user_map_btn' data-target='#user_map_modal' data-toggle='modal' data-toggle='modal' title='see_on_map'><i class='fa fa-map-marker'></i></button></div>"}
             ]
         });
     }
 
-    function get_users_todo_data(){
+    function get_user_todos_data(){
         
-        $(document).on("click",".get-todo-btn",function(){
+        $(document).on("click",".user_todo_btn",function(){
             var user_id = $(this).closest("tr").find("td").first().text();
             $.get("https://jsonplaceholder.typicode.com/todos", {}, function(todos){
+                var user_todos = todos.filter(function(value){
+                    return value["userId"] == user_id;
+                })
                 
-                for(todo in todos){
-                    if(user_id == todos[todo]["userId"]){
-                        arr.push(todos[todo]);   
-                    }
-                }
-                
-                get_users_list();    
-                // console.log(arr);
+                get_users_list(user_todos);    
+                // console.log(user_todos);
             })   
         })   
     }
 
-    function get_users_list(){
+    function get_users_list(user_todos){
         var user_html = "";
-        for(i in arr){
-            user_html += "<li class="+arr[i]["completed"]+">"+arr[i]["title"]+"</li>" ;
+        for(i in user_todos){
+            user_html += "<li class="+user_todos[i]["completed"]+">"+user_todos[i]["title"]+"</li>" ;
         }
         $("#u_list").html(user_html);
-        arr = [];
+        // user_todos = [];
     }
     
     function get_user_on_map(){
-        $(document).on("click",".get-on-map",function(){
+        $(document).on("click",".user_map_btn",function(){
             var user_id = $(this).closest("tr").find("td").first().text();
             // console.log(user_id);
             
@@ -149,7 +145,7 @@ $(document).ready(function(){
 
     function init(){
         get_users_data();
-        get_users_todo_data();
+        get_user_todos_data();
         get_user_on_map();
     }
 
