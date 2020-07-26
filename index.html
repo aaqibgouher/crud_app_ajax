@@ -11,24 +11,7 @@
         <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="plugins/datatables/datatables.css" rel="stylesheet">
         <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIpclOwbRaU_joiJGJg7ZW-BOb3RfEZ6c&callback=initMap&libraries=&v=weekly" defer></script>
         <link href="css/app.css" rel="stylesheet">
-        
-        <script>
-            function initMap() {
-                const myLatLng = { lat: -25.363, lng: 131.044 };
-                const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 4,
-                center: myLatLng
-                });
-                new google.maps.Marker({
-                position: myLatLng,
-                map,
-                title: "Hello World!"
-                });
-            }
-        </script>
         
     </head>
     <body>
@@ -67,6 +50,8 @@
         <script src="plugins/bootstrap/js/bootstrap.min.js"></script>   <!--added bootstrap file paath-->
         <script src="plugins/jquery-validation/dist/jquery.validate.js"></script>
         <script src="plugins/datatables/datatables.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=APIKEY&callback=init&libraries=&v=weekly" defer></script>
         <script src="js/app.js"></script>       <!--added js path-->
     </body>
 </html>
