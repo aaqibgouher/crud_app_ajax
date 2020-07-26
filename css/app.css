@@ -6,3 +6,7 @@
 .false {
     color : rgb(211, 45, 45);
 }
+
+#map {
+    height: 300px;
+}

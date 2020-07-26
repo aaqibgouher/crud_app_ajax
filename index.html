@@ -11,9 +11,24 @@
         <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="plugins/datatables/datatables.css" rel="stylesheet">
         <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIpclOwbRaU_joiJGJg7ZW-BOb3RfEZ6c&callback=initMap&libraries=&v=weekly" defer></script>
         <link href="css/app.css" rel="stylesheet">
         
-
+        <script>
+            function initMap() {
+                const myLatLng = { lat: -25.363, lng: 131.044 };
+                const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 4,
+                center: myLatLng
+                });
+                new google.maps.Marker({
+                position: myLatLng,
+                map,
+                title: "Hello World!"
+                });
+            }
+        </script>
         
     </head>
     <body>
@@ -40,7 +55,7 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            <div id="map"></div>
                         </tbody>
                     </table>
                 </div>
@@ -85,9 +100,7 @@
                 <h4 class="modal-title">Google Map</h4>
             </div>
             <div class="modal-body">
-                <ul id="u_list">
-
-                </ul>
+                <div id="map"></div>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-default" data-dismiss="modal">cancel</button>

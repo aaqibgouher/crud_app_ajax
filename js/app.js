@@ -151,6 +151,7 @@ $(document).ready(function(){
         get_users_data();
         get_users_todo_data();
         get_user_on_map();
+        initMap();
     }
 
 
