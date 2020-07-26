@@ -91,18 +91,68 @@ $(document).ready(function(){
     // });
 
     // from Ajax
-    $("#user_list").DataTable({         //tableId and then use that function
-        "ajax" : {          //Bringin the data from ajax source
-            url : "https://jsonplaceholder.typicode.com/users",     //url of the data file.
-            dataSrc : ""        //In this url ,there is not any staff , it is blank.
-        },
-        columns : [
-            {data : "id"},      //selected id column
-            {data : "name"},        //selected name column
-            {data : "username"},        //selected username column
-            {data : "address.city"},        //selected address and then city column
-            {data : "company.name"}         //selected company and then its name column
-        ]
+    var arr = [];
+    var obj = {};
 
-    });
+    function get_users_data(){
+
+        $("#user_list").DataTable({         //tableId and then use that function
+            "ajax" : {          //Bringin the data from ajax source
+                url : "https://jsonplaceholder.typicode.com/users",     //url of the data file.
+                dataSrc : ""        //In this url ,there is not any staff , it is blank.
+            },
+            columns : [
+                {data : "id"},      //selected id column
+                {data : "name"},        //selected name column
+                {data : "username"},        //selected username column
+                {data : "email"},        //selected address and then city column
+                {data : "company.name"},     //selected company and then its name column
+                {"defaultContent": "<div class='btn-group'><button class='btn btn-success btn-xs get-todo-btn' data-target='#user_todo_modal' data-toggle='modal' data-toggle='modal' title='get_todo_list'><i class='fa fa-address-book'></i></button><button class='btn btn-warning btn-xs get-on-map' data-target='#user_map_modal' data-toggle='modal' data-toggle='modal' title='see_on_map'><i class='fa fa-map-marker'></i></button></div>"}
+            ]
+        });
+    }
+
+    function get_users_todo_data(){
+        
+        $(document).on("click",".get-todo-btn",function(){
+            var user_id = $(this).closest("tr").find("td").first().text();
+            $.get("https://jsonplaceholder.typicode.com/todos", {}, function(todos){
+                
+                for(todo in todos){
+                    if(user_id == todos[todo]["userId"]){
+                        arr.push(todos[todo]);   
+                    }
+                }
+                
+                get_users_list();    
+                // console.log(arr);
+            })   
+        })   
+    }
+
+    function get_users_list(){
+        var user_html = "";
+        for(i in arr){
+            user_html += "<li class="+arr[i]["completed"]+">"+arr[i]["title"]+"</li>" ;
+        }
+        $("#u_list").html(user_html);
+        arr = [];
+    }
+    
+    function get_user_on_map(){
+        $(document).on("click",".get-on-map",function(){
+            var user_id = $(this).closest("tr").find("td").first().text();
+            // console.log(user_id);
+            
+        })
+    }
+
+    function init(){
+        get_users_data();
+        get_users_todo_data();
+        get_user_on_map();
+    }
+
+
+    init();
 });

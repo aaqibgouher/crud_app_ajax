@@ -1,7 +1,8 @@
-label.error{
-    color: red !important;
-    font-size: 12px;
+
+.true {
+    text-decoration: line-through !important;
+    color: rgb(48, 148, 48);
 }
-input.error{
-    border-color: red !important;
+.false {
+    color : rgb(211, 45, 45);
 }
